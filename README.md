@@ -25,19 +25,26 @@ ELM(Extreme Learning Machine) Blockerというプラットフォーム環境で�
 ドメイン名の全文字数を*d*としたとき、
 その頻度*p<sub>i</sub>=c<sub>i</sub> / d*を用いて、エントロピー*E*は
 以下のように表すことができる。  
-<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;E&space;=&space;-&space;\sum_{i=1}^{n}&space;p_{i}&space;\times&space;\log_{2}p_{i}&space;\end{align*}" />  
+    <img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;E&space;=&space;-&space;\sum_{i=1}^{n}&space;p_{i}&space;\times&space;\log_{2}p_{i}&space;\end{align*}" />  
 例: 3.180832987205441 (osaka-u.ac.jp)
 1. ドメインに紐づけられたIPアドレス数  
+5種類のDNSサーバ `1.1.1.1`, `8.8.8.8`, `208.67.222.123`, `176.103.130.130`, `64.6.64.6`
+に介してドメインに紐づけられたIPアドレスを探し、その種類を数える。  
 例: 0 (osaka-u.ac.jp)
 1. IPアドレスの所属する国数  
+上記IPアドレスが割り振られた国を検索し、その種類を数える。  
 例: 0 (osaka-u.ac.jp)
-1. TTLの平均値  
+1. Time To Live (TTL) の平均値  
+上記DNSサーバへの問い合わせ時に取得したTTL値の平均。  
 例: 53667 (osaka-u.ac.jp)
 1. TTLの標準偏差  
+上記DNSサーバへの問い合わせ時に取得したTTL値の標準偏差。  
 例: 102768.95645475826 (osaka-u.ac.jp)
 1. ドメインの有効日数  
+whoisサーバに登録されたドメインの情報から、ドメインの作成日から有効期限までの日数を計算する。  
 例: 2268 (osaka-u.ac.jp)
 1. ドメインのアクティブ日数  
+whoisサーバに登録されたドメインの情報から、ドメインの作成日から直近の更新日までの日数を計算する。  
 例: 1904 (osaka-u.ac.jp)
 
 # 実行環境
