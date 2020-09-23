@@ -15,17 +15,17 @@ ELM(Extreme Learning Machine) Blockerというプラットフォーム環境で�
 特徴量は以下の9種類を使用
 
 1. ドメイン名の文字数  
-ドメイン名に含まれる全文字数  
+ドメイン名に含まれる全文字数。  
 例: 13 (osaka-u.ac.jp)
 1. 連続文字の最大連続数  
-ドメイン名において、連続する文字の最大長  
+ドメイン名において、連続する文字の最大長。  
 例: 3 (aaaabcbbb.jp)
 1. ドメイン名のエントロピー  
-各文字の出現回数を  
-```math
-$$ {c_{1}, c_{2}, ... c_{n}} $$
-```
-エントロピー = (各文字の出現回数) / (ドメイン名の全文字長)  
+各文字の出現回数を{*c<sub>1</sub>, c<sub>2</sub>, ... c<sub>n</sub>*}、
+ドメイン名の全文字数を*d*としたとき、
+その頻度*p<sub>i</sub>=c<sub>i</sub> / d*を用いて、エントロピー*E*は
+以下のように表すことができる。  
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;E&space;=&space;-&space;\sum_{i=1}^{n}&space;p_{i}&space;\times&space;\log_{2}p_{i}&space;\end{align*}" />  
 例: 3.180832987205441 (osaka-u.ac.jp)
 1. ドメインに紐づけられたIPアドレス数  
 例: 0 (osaka-u.ac.jp)
