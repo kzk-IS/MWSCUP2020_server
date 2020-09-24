@@ -1072,7 +1072,7 @@ async function date_difference(domain) {
 
 
 async function Ouralgorithm(domain){
-  path = "file:///root/http_server/model_mws/model.json";
+  path = "file://model_mws/model.json";
   parameter_path = __dirname + "/model_mws/parameter.json";
   features = await get_features(domain);
   standard_trans(features,parameter_path);
