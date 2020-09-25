@@ -61,6 +61,9 @@ whoisサーバに登録されたドメインの情報から、ドメインの作
 
 学習させたELMモデルの性能を測るため交差検証を行った結果、精度は90.1%であった。
 
+※データセットについては倫理的問題のため，公開しておりません．もし研究などで使いたい人がいればご連絡ください．
+
+
 # 実行環境
 - Amazon Linux AMI release 2018.03
 - Node.js v12.18.3
@@ -77,3 +80,13 @@ whoisサーバに登録されたドメインの情報から、ドメインの作
 - `cd http_server`
 - `npm install @tensorflow/tfjs-node` tensorflow.jsのNode.jsに最適化されたライブラリをinstall
 
+# 製作者
+- [kzk-IS](https://github.com/kzk-IS)
+- [akazs](https://github.com/akazs)
+- [nanana710](https://github.com/nanana710)
+- [han9umeda](https://github.com/han9umeda)
+- [takemr](https://github.com/takemr)
+- [flabrei926](https://github.com/flabrei926)
+
+# アドバイザー
+[矢内直人(大阪大学 大学院情報科学研究科 セキュリティ工学講座(藤原研究室) 助教)](http://www-infosec.ist.osaka-u.ac.jp/~yanai/)
