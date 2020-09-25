@@ -25,7 +25,7 @@ https://github.com/kzk-IS/MWSCUP2020_addon
 例: 13 (osaka-u.ac.jp)
 2. 連続文字の最大連続数  
 ドメイン名において、連続する文字の最大長  
-例:  (aaaabcbbb.jp)
+例: 3 (aaabcbbb.jp)
 3. ドメイン名のエントロピー  
 各文字の出現回数を{*c<sub>1</sub>, c<sub>2</sub>, ... c<sub>n</sub>*}、
 ドメイン名の全文字数を*d*としたとき、
