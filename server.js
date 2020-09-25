@@ -922,6 +922,7 @@ async function date_difference(domain) {
   //console.log(parent_domain);
   try {
     const stdout = execSync(`whois ${domain}`);
+    console.log(stdout)
     var line = stdout.toString().split('\n');
     var expiration = get_expiration(line, parent_domain);
     var created = get_created(line, parent_domain);
@@ -950,6 +951,18 @@ async function date_difference(domain) {
 /**
 ここからメイン
 **/
+async function get_feature(domain) {
+  var server = ["1.1.1.1", "8.8.8.8", "208.67.222.123", "176.103.130.130", "64.6.64.6"];
+  console.log(domain);
+  let dlength = domain_length(domain);
+  let consecutive = consecutive_character(domain);
+  let entropy = domain_entropy(domain);
+  let { length: length, country: country, avg: avg, std: std } = await get_nslookup(domain, server);
+  let { life, active } = await date_difference(domain);
+
+  var features = [dlength,consecutive,entropy, length,country , avg , std , life , active ];
+  return features;
+}
 
 
 async function get_features(domain){
@@ -961,7 +974,7 @@ async function get_features(domain){
   // let { life, active } = await date_difference(domain);
 
   f = await Promise.all([get_nslookup(domain,server),date_difference(domain)])
-  //console.log(f);
+  console.log("promise=",f);
   result_list.push(domain_length(domain));
   result_list.push(consecutive_character(domain));
   result_list.push(domain_entropy(domain));
@@ -973,7 +986,7 @@ async function get_features(domain){
   result_list.push(f[1]["active"]);
   end_time = performance.now();
   console.log(end_time-start_time)
-  console.log(result_list)
+  console.log("result_list =",result_list)
   // console.log(`Average TTL Value: ${avg} (${domain})`);
   // console.log(`Standard Deviation of TTL: ${std} (${domain})`);
   // console.log(`Number of IP addresses: ${length} (${domain})`);
@@ -981,21 +994,6 @@ async function get_features(domain){
   // console.log(`Life Time of Domain: ${life} (${domain})`);
   // console.log(`Active Time of Domain: ${active} (${domain})\n`);
   return result_list
-}
-
-async function get_feature(domain, isMalicious) {
-  var server = ["1.1.1.1", "8.8.8.8", "208.67.222.123", "176.103.130.130", "64.6.64.6"];
-  console.log(domain);
-  let dlength = domain_length(domain);
-  let consecutive = consecutive_character(domain);
-  let entropy = domain_entropy(domain);
-  let { length: length, country: country, avg: avg, std: std } = await get_nslookup(domain, server);
-  let { life, active } = await date_difference(domain);
-
-  var features = { isMaliciousSite:isMalicious, domainLength:dlength,
-    consecutive:consecutive, entropy:entropy, IPaddress:length ,
-    countries:country , averageTTL:avg , stdTTL:std , lifeTime:life , activeTime:active };
-  return features;
 }
 
 /**
@@ -1052,7 +1050,7 @@ async function date_difference(domain) {
   } catch (error) {
     //console.log(`error`);
   }
-  //console.log(expiration, created, updated);
+  console.log("whois based=",expiration, created, updated);
   if(created == undefined || expiration == undefined) {
     var life_time = 0;
   } else if(created == ('Invalid Date') || expiration == 'Invalid Date') {
@@ -1075,7 +1073,8 @@ async function Ouralgorithm(domain){
   path = "file://model_mws/model.json";
   parameter_path = __dirname + "/model_mws/parameter.json";
   features = await get_features(domain);
-  standard_trans(features,parameter_path);
+  //features = await get_feature(domain);
+  features = await standard_trans(features,parameter_path);
   console.log(features);
   result = inference(path,[features]);
   //console.log(result);
