@@ -4,7 +4,7 @@ MADMAXアプリケーション環境でのサーバ側では受け取ったド�
 
 Shi et al., “Malicious Domain Name Detection Based on Extreme Machine Learning”, Neural Process Lett 48, 1347–1357, 2018
 
-MADMAXは、
+MADMAXのユーザは、以下のリポジトリに示すFirefox ADD-ONSをインストールするだけで利用することが可能である。
 
 https://github.com/kzk-IS/MWSCUP2020_addon
 
